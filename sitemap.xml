@@ -26,6 +26,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://ewc-tabletop.github.io/logs/tasks/02-simple-web-server/</loc>
+         <lastmod>2023-08-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://ewc-tabletop.github.io/tags/</loc>
          <lastmod>2023-08-12</lastmod>
          <changefreq>daily</changefreq>

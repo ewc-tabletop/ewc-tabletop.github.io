@@ -33,7 +33,9 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "\u0422\u0435\u043c\u044b \u0434\u043b\u044f \u0441\u043a\u0440\u0438\u043d\u043a\u0430\u0441\u0442\u0430", url: "#_top", children: [
+          {title: "\u0420\u0430\u0441\u0441\u043a\u0430\u0437\u0430\u0442\u044c:", url: "#_top", children: [
+          ]},
+          {title: "\u0421\u0434\u0435\u043b\u0430\u0442\u044c:", url: "#_2", children: [
           ]},
         ];
 
@@ -60,12 +62,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../tags/" class="btn btn-xs btn-default pull-right">
+      <a href="../02-simple-web-server/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../tags/" class="btn btn-xs btn-link">
-        All Categories
+      <a href="../02-simple-web-server/" class="btn btn-xs btn-link">
+        Поднять простой веб-сервер
       </a>
     </div>
     
@@ -81,7 +83,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="_1">Темы для скринкаста</h1>
+    <h1 id="_1">Рассказать:</h1>
 <ul>
 <li>Общая функциональная схема приложения:<ul>
 <li>фронтенд, бэкенд-фасад, движок и набор правил</li>
@@ -103,11 +105,28 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li>Подход Walking Skeleton<ul>
 <li>Минимально возможный вертикальный срез по всему приложению, включая инфраструктуру.<ul>
-<li>Мне этот вариант нравится меньше, потому что хоть он и снимает инфраструктурные риски, но заставляет принимать решения о составе модулей проекта на старте, когда еще неизвестны точные требования.</li>
+<li>Мне этот вариант нравится меньше, потому что хоть он и снимает
+  инфраструктурные риски, но заставляет принимать решения о
+  составе модулей проекта на старте, когда еще неизвестны точные
+  требования</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<h1 id="_2">Сделать:</h1>
+<ul>
+<li>Создать репозиторий в github, импортировать его в GT</li>
+<li><a href="../02-simple-web-server/">Поднять простой веб-сервер для статики</a>, подключить
+  зависимость в проект</li>
+<li>Создать простую веб-страницу с сеткой для "Крестиков-ноликов" на основе кнопок
+  Bootstrap</li>
+<li>Фейковая реализация на фронте:<ul>
+<li>Кнопка "Сделать ход", которая запускает обновление страницы и передает
+  в этот процесс новое состояние игры</li>
+<li>Перерисовка состояния элементов управления в процессе обновления</li>
 </ul>
 </li>
 </ul>
@@ -123,12 +142,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../tags/" class="btn btn-xs btn-default pull-right">
+      <a href="../02-simple-web-server/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../tags/" class="btn btn-xs btn-link">
-        All Categories
+      <a href="../02-simple-web-server/" class="btn btn-xs btn-link">
+        Поднять простой веб-сервер
       </a>
     </div>
     
