@@ -1,0 +1,15 @@
+.navbar {
+	background-color: #152b41;
+}
+
+.wm-toc-li.wm-current {
+	background-color: #152b41;
+}
+
+.wm-toc-li.wm-current:hover {
+	background-color: #10708b;
+}
+
+.wm-toctree a {
+	color: #10708b;
+}
