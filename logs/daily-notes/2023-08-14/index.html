@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://ewc-tabletop.github.io/logs/tasks/02-simple-web-server/">
+    <link rel="canonical" href="https://ewc-tabletop.github.io/logs/daily-notes/2023-08-14/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Поднять простой веб-сервер - Настолки в Smalltalk'е</title>
+    <title>14 Авг, Понедельник - Настолки в Smalltalk'е</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -58,20 +58,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../tags/task-detail/" class="btn btn-xs btn-default pull-right">
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../tags/task-detail/" class="btn btn-xs btn-link">
-        task-detail
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-link">
+        Подготовить скринкаст по настройке проекта
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../01-project-config/" class="btn btn-xs btn-default pull-left">
+      <a href="../2023-08-13/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../01-project-config/" class="btn btn-xs btn-link">
-        Подготовить скринкаст по настройке проекта
+        Previous</a><a href="../2023-08-13/" class="btn btn-xs btn-link">
+        13 Авг, Воскресенье
       </a>
     </div>
     
@@ -79,18 +79,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <p>Для начала взаимодействие фронта и бэка будет очень простым, думаю, что
-достаточно будет отдавать на фронт статичные html-страницы. Для этого нужно в
-Smalltalk поднять простой веб-сервер. Можно обойтись стандартными средствами
-<code>Zinc Http</code>, а можно использовать очень тонкую прослойку <code>Teapot</code>. Ее в образе
-нет, нужно будет загрузить и подключить как зависимость в проект:</p>
-<pre><code class="language-smalltalk">Metacello new
-  baseline: 'Teapot';
-  repository: 'github://zeroflag/Teapot/source';
-  load.
-</code></pre>
-<p>Использовать потом должно быть очень просто, документация по библиотеке доступна
-<a href="https://github.com/zeroflag/Teapot/blob/master/docs/UserGuide.md">здесь</a>.</p>
+    <ul>
+<li><a href="../../tasks/details/02-01-code-paradise-sample/">Подключил</a> платформу 
+  CodeParadise в проект.</li>
+</ul>
 
   <br>
     
@@ -103,20 +95,20 @@ Smalltalk поднять простой веб-сервер. Можно обой
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../tags/task-detail/" class="btn btn-xs btn-default pull-right">
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../tags/task-detail/" class="btn btn-xs btn-link">
-        task-detail
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-link">
+        Подготовить скринкаст по настройке проекта
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../01-project-config/" class="btn btn-xs btn-default pull-left">
+      <a href="../2023-08-13/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../01-project-config/" class="btn btn-xs btn-link">
-        Подготовить скринкаст по настройке проекта
+        Previous</a><a href="../2023-08-13/" class="btn btn-xs btn-link">
+        13 Авг, Воскресенье
       </a>
     </div>
     
