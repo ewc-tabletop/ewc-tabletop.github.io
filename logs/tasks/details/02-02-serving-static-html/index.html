@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://ewc-tabletop.github.io/logs/tasks/details/02-02-web-server-sample/">
+    <link rel="canonical" href="https://ewc-tabletop.github.io/logs/tasks/details/02-02-serving-static-html/">
     <link rel="shortcut icon" href="../../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Запуск простого веб-приложения - Настолки в Smalltalk'е</title>
+    <title>Рендеринг статичного html в веб-приложении CodeParadise - Настолки в Smalltalk'е</title>
     <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../../css/base.css" rel="stylesheet">
@@ -33,12 +33,17 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "22 \u0410\u0432\u0433\u0443\u0441\u0442\u0430, \u0412\u0442\u043e\u0440\u043d\u0438\u043a", url: "#_top", children: [
-              {title: "WebApp", url: "#webapp" },
-              {title: "Model", url: "#model" },
-              {title: "View", url: "#view" },
-              {title: "Presenter", url: "#presenter" },
-              {title: "Tags", url: "#tags" },
+          {title: "WebApp", url: "#_top", children: [
+          ]},
+          {title: "Model", url: "#model", children: [
+          ]},
+          {title: "View", url: "#view", children: [
+          ]},
+          {title: "Presenter", url: "#presenter", children: [
+          ]},
+          {title: "\u0418\u0442\u043e\u0433", url: "#_1", children: [
+          ]},
+          {title: "Tags", url: "#tags", children: [
           ]},
         ];
 
@@ -65,12 +70,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-default pull-right">
+      <a href="../02-03-user-interaction/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-link">
-        task-detail
+      <a href="../02-03-user-interaction/" class="btn btn-xs btn-link">
+        Простое взаимодействие с пользователем
       </a>
     </div>
     
@@ -86,8 +91,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="22">22 Августа, Вторник</h1>
-<p>После запуска встроенных демо-приложений CodeParadise я начал создание
+    <p>После запуска встроенных демо-приложений CodeParadise я начал создание
 собственного веб-приложения. </p>
 <h2 id="webapp">WebApp</h2>
 <p>Приложение CodeParadise в целом - это класс, унаследованный от одного из трех
@@ -137,9 +141,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>В результате при загрузке приложения будет создан экземпляр класса
 <code>EwcCpTictactoePresenter</code>, в чьи обязанности будет входить организация
 взаимодействия клиента (браузера) и сервера. Тут есть некоторая неявность, дело
-в том, что этот имя класса Презентера будет впоследствии использовано для
-определения имени класса Отображения (View), это нигде не документировано, но 
-эти два класса должны идти парой: <code>EwcCpTictactoePresenter</code> и
+в том, что имя класса Презентера (без постфикса Presenter) будет впоследствии использовано для определения имени класса Отображения (View), это нигде не документировано, но эти два класса должны идти парой: <code>EwcCpTictactoePresenter</code> и
 <code>EwcCpTictactoeView</code>.</p>
 <h2 id="view">View</h2>
 <p>Тут все просто, это класс, унаследованный от <code>CpView</code>, внутри достаточно
@@ -163,6 +165,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Это, по сути, главный объект, связывающий воедино состояние системы и
 отображение этого состояния, а также транслирующий пользовательские действия в
 изменения состояния. </p>
+<p>Это обязательно должен быть наследник класса <code>CpPresenter</code>, в случае с моим простым приложением даже не нужно переопределять методы, то есть класс пустой, вся функциональность содержится в родительском классе. По сути, оказывается, что конкретный класс-наследник мне нужен только для того, чтобы платформа смогла найти конкретный класс Отображения <code>EwcCpTictactoeView</code>.</p>
+<h2 id="_1">Итог</h2>
+<p>Работающее веб-приложение с одной страничкой, на которой отображается статичный текст, стилизованный внешними (загружаемыми) css-файлами Bootstrap.</p>
 <h2 id="tags">Tags</h2>
 <ul>
 <li><a href="../../../../tags/code-paradise/">code-paradise</a></li>
@@ -180,12 +185,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-default pull-right">
+      <a href="../02-03-user-interaction/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-link">
-        task-detail
+      <a href="../02-03-user-interaction/" class="btn btn-xs btn-link">
+        Простое взаимодействие с пользователем
       </a>
     </div>
     
