@@ -34,8 +34,12 @@
         
         var pageToc = [
           {title: "\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0434\u043e\u0441\u043a\u0438 \u0432 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u0432\u0435\u0431-\u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430", url: "#_top", children: [
+              {title: "HTML-\u0440\u0430\u0437\u043c\u0435\u0442\u043a\u0430 \u0434\u043e\u0441\u043a\u0438", url: "#html-" },
+              {title: "\u041c\u043e\u0434\u0435\u043b\u044c (\u0434\u0430\u043d\u043d\u044b\u0435) \u0434\u043e\u0441\u043a\u0438", url: "#_1" },
+              {title: "Presenter \u0434\u043b\u044f \u0434\u043e\u0441\u043a\u0438", url: "#presenter" },
+              {title: "\u041c\u043e\u0434\u0435\u043b\u044c \u044f\u0447\u0435\u0439\u043a\u0438", url: "#_2" },
           ]},
-          {title: "Tags", url: "#tags", children: [
+          {title: "\u041c\u0435\u0442\u043a\u0438", url: "#_3", children: [
           ]},
         ];
 
@@ -62,12 +66,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-default pull-right">
+      <a href="../02-04-web-components/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-link">
-        task-detail
+      <a href="../02-04-web-components/" class="btn btn-xs btn-link">
+        02 04 web components
       </a>
     </div>
     
@@ -83,13 +87,90 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <p>Для простого взаимодействия с пользователем нужно добавить на страницу новые элементы, которые будут связаны через определенный <code>Presenter</code> с какой-то <code>Model</code>. </p>
-<p>В общем-то, можно сразу попытаться создать доску для игры в "Крестики-нолики". С помощью <a href="https://www.perplexity.ai/search/32e7c08a-c442-42fe-89fe-778fb793753a?s=c">perplexity.ai</a> у меня получилось изобразить что-то похожее на чистом html.</p>
+    <p>Для простого взаимодействия с пользователем нужно добавить на страницу новые 
+элементы, которые будут связаны через определенный <code>Presenter</code> с какой-то 
+<code>Model</code>. </p>
+<p>В общем-то, можно сразу попытаться создать доску для игры в "Крестики-нолики". С 
+помощью <a href="https://www.perplexity.ai/search/32e7c08a-c442-42fe-89fe-778fb793753a?s=c">perplexity.ai</a> 
+у меня получилось изобразить что-то похожее на чистом html.</p>
 <h2 id="-">Отображение доски в качестве веб-компонента</h2>
-<p>Поскольку CodeParadise отображает элементы UI с помощью веб-компонентов, наверное, стоит превратить полученную доску в веб-компонент.</p>
+<p>Поскольку CodeParadise отображает элементы UI с помощью <a href="../02-04-web-components/">веб-компонентов</a>, 
+стоит превратить полученную доску в веб-компонент. Отдельные ячейки будут 
+также реализованы в виде веб-компонента, то есть в компонент доски нужно 
+будет встроить 9 экземпляров ячеек. Веб-компоненты позволяют определить 
+свободные места для встраивания с помощью элемента <code>&lt;slot&gt;</code>.</p>
+<h3 id="html-">HTML-разметка доски</h3>
+<p>Для отображения доски понадобится соответствующая разметка в
+верхнеуровневом веб-компоненте <code>EwcCpTictactoeView</code>. Я заменил весь 
+HTML-код в методе <code>template</code> на такую конструкцию:</p>
+<pre><code class="language-html">    &lt;div id=&quot;container&quot; class=&quot;board container py-5&quot;&gt;
+      &lt;h1 class=&quot;text-center&quot;&gt;Smalltalk&lt;br/&gt;Tic-Tac-Toe&lt;/h1&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;slot name=&quot;cell11&quot;&gt;&lt;/slot&gt;
+        &lt;slot name=&quot;cell12&quot;&gt;&lt;/slot&gt;
+        &lt;slot name=&quot;cell13&quot;&gt;&lt;/slot&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;slot name=&quot;cell21&quot;&gt;&lt;/slot&gt;
+        &lt;slot name=&quot;cell22&quot;&gt;&lt;/slot&gt;
+        &lt;slot name=&quot;cell23&quot;&gt;&lt;/slot&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;slot name=&quot;cell31&quot;&gt;&lt;/slot&gt;
+        &lt;slot name=&quot;cell32&quot;&gt;&lt;/slot&gt;
+        &lt;slot name=&quot;cell33&quot;&gt;&lt;/slot&gt;
+      &lt;/div&gt;
+    &lt;/div&gt; 
+</code></pre>
+<p>Стили тоже дополнил, в метод <code>style</code> добавил стиль для css-класса <code>board</code>:</p>
+<pre><code class="language-css">.board {
+  max-width: 300px;
+}
+</code></pre>
+<h3 id="_1">Модель (данные) доски</h3>
+<p>При инициализации приложения нужно создать модель доски, то есть какой-то
+объект или набор объектов, хранящих состояние доски. </p>
+<blockquote>
+<p>Речь идет именно о состоянии доски, то есть о модели, поддерживающей
+отображение, а не о модели, отслеживающей состояние игры в целом.</p>
+</blockquote>
+<p>Я решил хранить данные отображения в виде коллекции моделей, по одной на 
+каждую клетку игрового поля. Это значит, что в рантайме в экземпляре веб-
+приложения будет существовать 9 экземпляров моделей, а в клиентский 
+браузер будет загружено 9 классов отображения.</p>
+<p>Модель доски хранится в поле <code>cells</code> объекта <code>EwcCpTictactoeWebApp</code> и создается в
+момент инициализации веб-приложения:</p>
+<pre><code class="language-smalltalk">EwcCpTictactoeWebApp &gt;&gt; initialize
+  super initialize.
+  cells := (1 to: 9) collect: [ :index | EwcCpTictactoeCell withIndex: index ]
+</code></pre>
+<h3 id="presenter">Presenter для доски</h3>
+<p>Метод <code>renderView</code> нужно дополнить (или создать, если его еще не было):</p>
+<pre><code class="language-smalltalk">renderView
+  self model cells
+    do: [ :cell | self renderChildViewForModel: cell atSlotNamed: cell name ]
+</code></pre>
+<p>Этот код в цикле пробежит по всем моделям ячеек и отрисует каждую в слоте
+веб-компонента доски с именем, соответствующим имени экземпляра модели ячейки.</p>
+<h3 id="_2">Модель ячейки</h3>
+<p>Фреймворк CodeParadise требует, чтобы объекты, содержащие данные для
+отображения, были экземплярами класса-потомка <code>CpModel</code>. Поэтому класс 
+<code>EwcCpTictactoeCell</code> унаследован от <code>CpModel</code>:</p>
+<pre><code class="language-smalltalk">CpModel subclass: #EwcCpTictactoeCell
+   instanceVariableNames: 'index owners'
+   classVariableNames: ''
+   package: 'EwcTictactoe'
+</code></pre>
+<p>Каждый экземпляр модели ячейки инициализируется с помощью порядкового 
+номера на доске, для этого предназначен метод класса
+<code>EwcCpTictactoeCell class &gt;&gt; withIndex:</code>.</p>
+<p>Главное в модели ячейки - это ее значение (пусто, <code>Х</code> или <code>О</code>), которое 
+рассчитывается на основе переменной экземпляра <code>owners</code>, 
+содержащей коллекцию возможных вариантов. Из коллекции возвращается 
+первый элемент, а при нажатии на ячейку коллекция циклически сдвигается
+на один элемент.</p>
+<p>Для того, чтобы разместить данные модели</p>
 <ol>
-<li>Для отображения доски понадобится слот в верхнеуровневом веб-компоненте <code>EwcCpTictactoeView</code>. Нужно добавить строчку <code>&lt;slot name="board"&gt;&lt;/slot&gt;</code> перед закрывающим тегом <code>&lt;/div&gt;</code> в методе <code>EwcCpTictactoeView &gt;&gt; template</code>.</li>
-<li>При инициализации приложения нужно создать новый экземпляр модели доски (состояния игры). Это должен быть экземпляр класса-потомка <code>CpModel</code>. Его можно сохранить в переменную экземпляра <code>board</code> и возвращать в ответ на одноименное сообщение.</li>
 <li>Класс модели доски должен объявить свой класс-Presenter в методе <code>preferredPresenterClass</code>.</li>
 <li>Необходимо создать класс-VIew для доски, в котором переопределить методы <code>style</code> и <code>template</code>.</li>
 <li>Для того, чтобы компонент доски отобразился на веб-странице, нужно добавить метод <code>renderView</code> в Presenter'е приложения:</li>
@@ -97,7 +178,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="language-smalltalk">EwcCpTictactoePresenter &gt;&gt; renderView
   self renderChildViewForModel: self model board atSlotNamed: #board
 </code></pre>
-<h2 id="tags">Tags</h2>
+<h2 id="_3">Метки</h2>
 <ul>
 <li><a href="../../../../tags/code-paradise/">code-paradise</a></li>
 <li><a href="../../../../tags/task-detail/">task-detail</a></li>
@@ -114,12 +195,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-default pull-right">
+      <a href="../02-04-web-components/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../../tags/task-detail/" class="btn btn-xs btn-link">
-        task-detail
+      <a href="../02-04-web-components/" class="btn btn-xs btn-link">
+        02 04 web components
       </a>
     </div>
     
