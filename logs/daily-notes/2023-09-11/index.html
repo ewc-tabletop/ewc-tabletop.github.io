@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="canonical" href="https://ewc-tabletop.github.io/logs/tasks/03-single-game-state/">
+    <link rel="canonical" href="https://ewc-tabletop.github.io/logs/daily-notes/2023-09-11/">
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Реализовать единое состояние игры - Настолки в Smalltalk'е</title>
+    <title>11 Сен, Понедельник - Настолки в Smalltalk'е</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -33,11 +33,6 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "\u041f\u043e \u0434\u0430\u0442\u0430\u043c", url: "#_top", children: [
-              {title: "10 \u0421\u0435\u043d\u0442\u044f\u0431\u0440\u044f, \u0412\u043e\u0441\u043a\u0440\u0435\u0441\u0435\u043d\u044c\u0435", url: "#10" },
-              {title: "11 \u0421\u0435\u043d, \u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a", url: "#11" },
-              {title: "\u041c\u0435\u0442\u043a\u0438", url: "#_2" },
-          ]},
         ];
 
     </script>
@@ -63,20 +58,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../tags/task/" class="btn btn-xs btn-default pull-right">
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../tags/task/" class="btn btn-xs btn-link">
-        task
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-link">
+        Подготовить скринкаст по настройке проекта
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../02-simple-web-server/" class="btn btn-xs btn-default pull-left">
+      <a href="../2023-09-10/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../02-simple-web-server/" class="btn btn-xs btn-link">
-        Поднять простой веб-сервер
+        Previous</a><a href="../2023-09-10/" class="btn btn-xs btn-link">
+        10 Сен, Воскресенье
       </a>
     </div>
     
@@ -84,20 +79,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h1 id="_1">По датам</h1>
-<h2 id="10"><a href="../../daily-notes/2023-09-10/">10 Сентября, Воскресенье</a></h2>
-<ul>
-<li>создал класс-одиночку <code>EwcTictactoeGame</code> для хранения состояние единственной играемой партии</li>
-<li>перенес в этот класс модель состояния игрового поля (коллекцию <code>EwcCpTictactoeCell</code>). Пока как есть, но в целом модель общего состояния игры не должна зависеть (наследоваться) от классов фреймворка CodeParadise.</li>
-</ul>
-<h2 id="11"><a href="../../daily-notes/2023-09-11/">11 Сен, Понедельник</a></h2>
-<ul>
-<li>реализовал привязку конкретного символа (<code>X</code>/<code>O</code>) к конкретному игроку, т.е. теперь каждый игрок может ставить в ячейки только "свои" символы.</li>
-</ul>
-<h2 id="_2">Метки</h2>
-<ul>
-<li><a href="../../../tags/task/">task</a></li>
-</ul>
+    <p>Немного видоизменил обработку события <code>CpCellClicked</code> на стороне сервера. Теперь Presenter, принимающий это событие, будет ориентироваться на то, какой игрок кликнул по ячейке (и игрок ли вообще). Выглядит это следующим образом:</p>
+<pre><code class="language-smalltalk">EwcCpTictactoeCellPresenter &gt;&gt; cellClicked
+    self application player 
+        ifNotNil: [ self model setOwner: self application player ] 
+</code></pre>
+<p><code>self application player</code>  возвращает тот символ, с которым игрок зарегистрировался в партии (регистрацию я реализовал <a href="../2023-09-10/">вчера</a>). Наблюдатели не получают символа, отсюда и обертка в виде <code>ifNotNull:</code>.</p>
 
   <br>
     
@@ -110,20 +97,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../../tags/task/" class="btn btn-xs btn-default pull-right">
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../../tags/task/" class="btn btn-xs btn-link">
-        task
+      <a href="../../tasks/01-project-config/" class="btn btn-xs btn-link">
+        Подготовить скринкаст по настройке проекта
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../02-simple-web-server/" class="btn btn-xs btn-default pull-left">
+      <a href="../2023-09-10/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../02-simple-web-server/" class="btn btn-xs btn-link">
-        Поднять простой веб-сервер
+        Previous</a><a href="../2023-09-10/" class="btn btn-xs btn-link">
+        10 Сен, Воскресенье
       </a>
     </div>
     
